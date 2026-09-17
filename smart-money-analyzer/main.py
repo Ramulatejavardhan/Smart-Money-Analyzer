@@ -30,4 +30,4 @@ elif choice =="8":
 elif choice =="9":
     print("See u again bye u selected EXIT choice")
 else:
-    print("select a valid choice again")
+    print("select a valid choice")
