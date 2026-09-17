@@ -11,4 +11,7 @@ print("7. Monthly report")
 print("8. Spending analysis")
 print("9. Exit")
 choice=input("Enter ur choice:")
-print("ur selected:",choice)
+if choice ==1:
+    print("Add transaction")
+elif choice ==2:
+    print("")
