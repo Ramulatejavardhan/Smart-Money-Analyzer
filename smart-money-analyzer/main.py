@@ -11,23 +11,23 @@ print("7. Monthly report")
 print("8. Spending analysis")
 print("9. Exit")
 choice=input("Enter ur choice:")
-if choice ==1:
+if choice =="1":
     print("Add transaction")
-elif choice ==2:
+elif choice =="2":
     print("View transactions")
-elif choice ==3:
+elif choice =="3":
     print("Delete transaction")
-elif choice ==4:
+elif choice =="4":
     print("Search and filter")
-elif choice ==5:
+elif choice =="5":
     print("View summary")
-elif choice ==6:
+elif choice =="6":
     print("Manage budget")
-elif choice ==7:
+elif choice =="7":
     print("Monthly report")
-elif choice ==8:
+elif choice =="8":
     print("Spending analysis")
-elif choice ==9:
-    print("See u again bye u selected EXIT")
+elif choice =="9":
+    print("See u again bye u selected EXIT choice")
 else:
     print("select a valid choice again")
