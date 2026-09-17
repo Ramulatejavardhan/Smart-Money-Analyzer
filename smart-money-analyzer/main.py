@@ -21,3 +21,13 @@ elif choice ==4:
     print("Search and filter")
 elif choice ==5:
     print("View summary")
+elif choice ==6:
+    print("Manage budget")
+elif choice ==7:
+    print("Monthly report")
+elif choice ==8:
+    print("Spending analysis")
+elif choice ==9:
+    print("See u again bye u selected EXIT")
+else:
+    print("select a valid choice again")
