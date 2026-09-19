@@ -1,6 +1,7 @@
 print("================================")
 print("     SMART MONEY ANALYZER")
 print("================================")
+while True:
 print("1. Add transaction")
 print("2. View transactions")
 print("3. Delete transaction")
@@ -29,5 +30,6 @@ elif choice =="8":
     print("Spending analysis")
 elif choice =="9":
     print("See u again bye u selected EXIT choice")
+    break
 else:
     print("select a valid choice")
