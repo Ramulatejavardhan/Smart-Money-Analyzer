@@ -20,3 +20,4 @@ while True:
 
     if choice == "9":
         print("Goodbye!")
+        break
