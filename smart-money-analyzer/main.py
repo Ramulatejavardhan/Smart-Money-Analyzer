@@ -16,8 +16,33 @@ while True:
 
     choice = input("Enter ur choice: ")
 
-    print("You entered:", choice)
+    if choice == "1":
+        print("Add transaction")
 
-    if choice == "9":
-        print("Goodbye!")
+    elif choice == "2":
+        print("View transactions")
+
+    elif choice == "3":
+        print("Delete transaction")
+
+    elif choice == "4":
+        print("Search and filter")
+
+    elif choice == "5":
+        print("View summary")
+
+    elif choice == "6":
+        print("Manage budget")
+
+    elif choice == "7":
+        print("Monthly report")
+
+    elif choice == "8":
+        print("Spending analysis")
+
+    elif choice == "9":
+        print("See u again, bye!")
         break
+
+    else:
+        print("Select a valid choice")
