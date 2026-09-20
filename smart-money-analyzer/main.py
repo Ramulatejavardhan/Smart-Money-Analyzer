@@ -41,7 +41,7 @@ while True:
         print("Spending analysis")
 
     elif choice == "9":
-        print("See u again, bye!")
+        print("see u again")
         break
 
     else:
