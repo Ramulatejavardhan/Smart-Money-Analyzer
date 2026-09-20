@@ -17,7 +17,8 @@ while True:
     choice = input("Enter ur choice: ")
 
     if choice == "1":
-        print("Add transaction")
+        transaction_type=input("Enter type(income/expense):")
+        print("Ur transaction type:",transaction_type)
 
     elif choice == "2":
         print("View transactions")
