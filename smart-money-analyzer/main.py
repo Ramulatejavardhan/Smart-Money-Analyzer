@@ -19,6 +19,8 @@ while True:
     if choice == "1":
         transaction_type=input("Enter type(income/expense):")
         print("Ur transaction type:",transaction_type)
+        amount = float(input("Enter amount: "))
+        print("Amount:", amount)
 
     elif choice == "2":
         print("View transactions")
