@@ -1,3 +1,5 @@
+import json
+
 print("================================")
 print("       SMART MONEY ANALYZER")
 print("================================")
@@ -17,6 +19,7 @@ while True:
     choice = input("Enter ur choice: ")
 
     if choice == "1":
+
         transaction_type = input("Enter type (income/expense): ")
         amount = float(input("Enter amount: "))
         category = input("Enter category: ")
@@ -31,8 +34,15 @@ while True:
             "date": date
         }
 
-        print("Transaction created successfully!")
-        print(transaction)
+        with open("data/transactions.json", "r") as file:
+            transactions = json.load(file)
+
+        transactions.append(transaction)
+
+        with open("data/transactions.json", "w") as file:
+            json.dump(transactions, file, indent=4)
+
+        print("Transaction saved successfully!")
 
     elif choice == "2":
         print("View transactions")
