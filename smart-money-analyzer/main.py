@@ -32,8 +32,7 @@ while True:
             "description": description,
             "date": date
         }
-
-        with open("data/transactions.json", "r") as file:
+        with open("transactions.json", "r") as file:
             transactions = json.load(file)
 
         transactions.append(transaction)
