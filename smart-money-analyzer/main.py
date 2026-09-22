@@ -17,12 +17,22 @@ while True:
     choice = input("Enter ur choice: ")
 
     if choice == "1":
-        transaction_type=input("Enter type(income/expense):")
+        transaction_type = input("Enter type (income/expense): ")
         amount = float(input("Enter amount: "))
         category = input("Enter category: ")
-        print("Ur transaction type:",transaction_type)
-        print("Amount:", amount)
-        print("Category:", category)
+        description = input("Enter description: ")
+        date = input("Enter date (YYYY-MM-DD): ")
+
+        transaction = {
+            "type": transaction_type,
+            "amount": amount,
+            "category": category,
+            "description": description,
+            "date": date
+        }
+
+        print("Transaction created successfully!")
+        print(transaction)
 
     elif choice == "2":
         print("View transactions")
@@ -46,7 +56,7 @@ while True:
         print("Spending analysis")
 
     elif choice == "9":
-        print("see u again")
+        print("See u again, bye!")
         break
 
     else:
