@@ -1,11 +1,8 @@
 import json
-
 print("================================")
 print("       SMART MONEY ANALYZER")
 print("================================")
-
 while True:
-
     print("1. Add transaction")
     print("2. View transactions")
     print("3. Delete transaction")
