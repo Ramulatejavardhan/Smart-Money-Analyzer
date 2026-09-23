@@ -1,19 +1,6 @@
-"""
-Simple tests for Smart Money Analyzer.
-
-These are basic, beginner-friendly tests.
-They do not use any testing framework, just plain Python
-functions and assert statements, so they are easy to read
-and easy to explain in an interview.
-
-Run this file directly with:
-    python tests/test_transactions.py
-"""
-
 import sys
 import os
 
-# Allow this test file to import functions from main.py
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 from main import (
@@ -82,7 +69,6 @@ def test_get_month_from_date():
 
 
 def test_budget_calculation():
-    # Simple manual budget check, same logic used in manage_budget()
     budget = 5000
     spent = 6200
 
@@ -96,8 +82,6 @@ def test_budget_calculation():
 
 
 def test_unusual_spending_logic():
-    # Same simple rule used in unusual_spending():
-    # unusual if current spending > average * 1.3
     previous_average = 2000
     current_spending = 4500
 

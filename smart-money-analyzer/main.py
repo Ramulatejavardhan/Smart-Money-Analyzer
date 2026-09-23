@@ -1,32 +1,14 @@
-"""
-SMART MONEY ANALYZER
----------------------
-A simple terminal based personal finance project.
-
-This program lets a user record income and expenses and then
-understand their spending habits using simple Python calculations.
-
-Built using only Python standard library and JSON files for storage.
-"""
-
 import json
 import os
 from datetime import datetime
 
-# ---------- FILE PATHS ----------
-# We use the folder of this script so the program works
-# no matter where it is run from.
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TRANSACTIONS_FILE = os.path.join(BASE_DIR, "data", "transactions.json")
 BUDGETS_FILE = os.path.join(BASE_DIR, "data", "budgets.json")
 
 
-# ==================================================
-# BASIC FILE HANDLING FUNCTIONS
-# ==================================================
-
 def load_transactions():
-    """Load all transactions from the JSON file. Return a list."""
     try:
         with open(TRANSACTIONS_FILE, "r") as file:
             data = json.load(file)
@@ -39,13 +21,11 @@ def load_transactions():
 
 
 def save_transactions(transactions):
-    """Save the list of transactions back to the JSON file."""
     with open(TRANSACTIONS_FILE, "w") as file:
         json.dump(transactions, file, indent=4)
 
 
 def load_budgets():
-    """Load budgets from the JSON file. Return a dictionary."""
     try:
         with open(BUDGETS_FILE, "r") as file:
             data = json.load(file)
@@ -58,25 +38,18 @@ def load_budgets():
 
 
 def save_budgets(budgets):
-    """Save the budgets dictionary back to the JSON file."""
     with open(BUDGETS_FILE, "w") as file:
         json.dump(budgets, file, indent=4)
 
 
 def get_next_id(transactions):
-    """Find the next simple integer ID for a new transaction."""
     if len(transactions) == 0:
         return 1
     all_ids = [t["id"] for t in transactions]
     return max(all_ids) + 1
 
 
-# ==================================================
-# VALIDATION HELPERS
-# ==================================================
-
 def is_valid_date(date_text):
-    """Check if a date string matches YYYY-MM-DD format."""
     try:
         datetime.strptime(date_text, "%Y-%m-%d")
         return True
@@ -85,7 +58,6 @@ def is_valid_date(date_text):
 
 
 def get_valid_amount():
-    """Ask the user for an amount until a valid positive number is given."""
     while True:
         amount_text = input("Enter amount: ₹").strip()
         try:
@@ -99,7 +71,6 @@ def get_valid_amount():
 
 
 def get_valid_date():
-    """Ask the user for a date until a valid YYYY-MM-DD date is given."""
     while True:
         date_text = input("Enter date (YYYY-MM-DD): ").strip()
         if is_valid_date(date_text):
@@ -108,17 +79,12 @@ def get_valid_date():
 
 
 def get_valid_type():
-    """Ask the user whether this is income or expense."""
     while True:
         t_type = input("Enter type (income/expense): ").strip().lower()
         if t_type in ("income", "expense"):
             return t_type
         print("Type must be 'income' or 'expense'. Try again.")
 
-
-# ==================================================
-# 1. ADD TRANSACTION
-# ==================================================
 
 def add_transaction():
     print("\n===== ADD TRANSACTION =====")
@@ -151,12 +117,7 @@ def add_transaction():
     print(f"Transaction added successfully with ID {new_transaction['id']}.")
 
 
-# ==================================================
-# 2. VIEW TRANSACTIONS
-# ==================================================
-
 def print_transaction(t):
-    """Print a single transaction in a readable format."""
     print("-" * 30)
     print(f"ID: {t['id']}")
     print(f"Type: {t['type']}")
@@ -179,10 +140,6 @@ def view_transactions():
     print("-" * 30)
     print(f"Total transactions: {len(transactions)}")
 
-
-# ==================================================
-# 3. DELETE TRANSACTION
-# ==================================================
 
 def delete_transaction():
     print("\n===== DELETE TRANSACTION =====")
@@ -214,10 +171,6 @@ def delete_transaction():
     else:
         print("Delete cancelled.")
 
-
-# ==================================================
-# 4. SEARCH & FILTER
-# ==================================================
 
 def search_filter():
     print("\n===== SEARCH & FILTER =====")
@@ -274,12 +227,7 @@ def search_filter():
         print(f"Matches found: {len(results)}")
 
 
-# ==================================================
-# 5. FINANCIAL SUMMARY
-# ==================================================
-
 def calculate_totals(transactions):
-    """Return total income and total expense from a list of transactions."""
     total_income = 0
     total_expense = 0
 
@@ -304,13 +252,7 @@ def financial_summary():
     print(f"Balance: ₹{balance}")
     print(f"Transactions: {len(transactions)}")
 
-
-# ==================================================
-# 6. BUDGET SYSTEM
-# ==================================================
-
 def get_category_expenses(transactions):
-    """Return a dictionary of category -> total expense amount."""
     category_totals = {}
 
     for t in transactions:
@@ -368,12 +310,7 @@ def manage_budget():
         print("Invalid choice.")
 
 
-# ==================================================
-# 7. MONTHLY REPORT
-# ==================================================
-
 def get_month_from_date(date_text):
-    """Extract YYYY-MM from a YYYY-MM-DD date string."""
     return date_text[:7]
 
 
@@ -399,15 +336,10 @@ def monthly_report():
 
     if len(category_expenses) > 0:
         print("\nTop spending categories:")
-        # simple sort by amount, highest first
         sorted_categories = sorted(category_expenses.items(), key=lambda item: item[1], reverse=True)
         for category, amount in sorted_categories:
             print(f"{category}: ₹{amount}")
 
-
-# ==================================================
-# 8. SPENDING ANALYSIS
-# ==================================================
 
 def spending_analysis():
     print("\n===== SPENDING ANALYSIS =====")
@@ -432,12 +364,7 @@ def spending_analysis():
     print(f"You are spending the most money on {highest_category}.")
 
 
-# ==================================================
-# 9. UNUSUAL SPENDING DETECTION
-# ==================================================
-
 def get_latest_month(transactions):
-    """Find the most recent month (YYYY-MM) present in the transactions."""
     months = [get_month_from_date(t["date"]) for t in transactions]
     if len(months) == 0:
         return None
@@ -455,9 +382,8 @@ def unusual_spending():
 
     latest_month = get_latest_month(expense_transactions)
 
-    # Split expenses into "current month" and "previous months"
     current_month_expenses = {}
-    previous_months_expenses = {}   # category -> {month: total}
+    previous_months_expenses = {}
 
     for t in expense_transactions:
         month = get_month_from_date(t["date"])
@@ -477,7 +403,6 @@ def unusual_spending():
             monthly_totals = list(previous_months_expenses[category].values())
             average = sum(monthly_totals) / len(monthly_totals)
 
-            # consider it unusual if current spending is at least 30% higher than average
             if average > 0 and current_amount > average * 1.3:
                 found_unusual = True
                 print(f"\n{category} spending is higher than your usual spending.")
@@ -487,10 +412,6 @@ def unusual_spending():
     if not found_unusual:
         print("No unusual spending detected. Your spending looks normal.")
 
-
-# ==================================================
-# MAIN MENU
-# ==================================================
 
 def show_menu():
     print("\n===== SMART MONEY ANALYZER =====")
