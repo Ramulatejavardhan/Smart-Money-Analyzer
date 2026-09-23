@@ -11,6 +11,7 @@ from main import (
     get_month_from_date,
 )
 
+# This test checks if income and expense totals are added correctly
 
 def test_calculate_totals():
     transactions = [
@@ -25,6 +26,8 @@ def test_calculate_totals():
     assert expense == 500
     print("test_calculate_totals passed")
 
+
+# This test checks that expense totals are grouped by category
 
 def test_get_category_expenses():
     transactions = [
@@ -42,6 +45,8 @@ def test_get_category_expenses():
     print("test_get_category_expenses passed")
 
 
+# This test checks the next ID value for new records
+
 def test_get_next_id():
     empty_list = []
     assert get_next_id(empty_list) == 1
@@ -55,6 +60,8 @@ def test_get_next_id():
     print("test_get_next_id passed")
 
 
+# This test checks if the date format is correct
+
 def test_is_valid_date():
     assert is_valid_date("2026-09-23") == True
     assert is_valid_date("23-09-2026") == False
@@ -62,11 +69,15 @@ def test_is_valid_date():
     print("test_is_valid_date passed")
 
 
+# This test checks if the date is changed to year-month format
+
 def test_get_month_from_date():
     assert get_month_from_date("2026-09-23") == "2026-09"
     assert get_month_from_date("2025-01-05") == "2025-01"
     print("test_get_month_from_date passed")
 
+
+# This test checks if the budget is over by the correct amount
 
 def test_budget_calculation():
     budget = 5000
@@ -81,6 +92,8 @@ def test_budget_calculation():
     print("test_budget_calculation passed")
 
 
+# This test checks if spending is more than usual
+
 def test_unusual_spending_logic():
     previous_average = 2000
     current_spending = 4500
@@ -94,6 +107,8 @@ def test_unusual_spending_logic():
 
     print("test_unusual_spending_logic passed")
 
+
+# This function runs all tests in the file
 
 def run_all_tests():
     test_calculate_totals()

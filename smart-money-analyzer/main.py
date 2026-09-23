@@ -3,12 +3,16 @@ import os
 from datetime import datetime
 
 
+# This is the main folder of the project
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# File where all money records are saved
 TRANSACTIONS_FILE = os.path.join(BASE_DIR, "data", "transactions.json")
+# File where all budget data is saved
 BUDGETS_FILE = os.path.join(BASE_DIR, "data", "budgets.json")
 
 
 def load_transactions():
+    # Read the saved transactions from the file
     try:
         with open(TRANSACTIONS_FILE, "r") as file:
             data = json.load(file)
@@ -58,6 +62,7 @@ def is_valid_date(date_text):
 
 
 def get_valid_amount():
+    # Keep asking until the user enters a correct positive number
     while True:
         amount_text = input("Enter amount: ₹").strip()
         try:
@@ -89,8 +94,10 @@ def get_valid_type():
 def add_transaction():
     print("\n===== ADD TRANSACTION =====")
 
+    # Load all old transactions first
     transactions = load_transactions()
 
+    # Take all details from the user
     t_type = get_valid_type()
     amount = get_valid_amount()
 
@@ -111,7 +118,9 @@ def add_transaction():
         "date": date
     }
 
+    # Add the new item to the list
     transactions.append(new_transaction)
+    # Save the updated list back to the file
     save_transactions(transactions)
 
     print(f"Transaction added successfully with ID {new_transaction['id']}.")
@@ -414,7 +423,7 @@ def unusual_spending():
 
 
 def show_menu():
-    print("\n===== SMART MONEY ANALYZER =====")
+    print("===== SMART MONEY ANALYZER =====")
     print("1. Add Transaction")
     print("2. View Transactions")
     print("3. Delete Transaction")
@@ -424,10 +433,11 @@ def show_menu():
     print("7. Monthly Report")
     print("8. Spending Analysis")
     print("9. Unusual Spending")
-    print("0. Exit")
+    print("10. Exit")
 
 
 def main():
+    # Keep the app running until the user chooses Exit
     while True:
         show_menu()
         choice = input("Enter your choice: ").strip()
@@ -450,11 +460,11 @@ def main():
             spending_analysis()
         elif choice == "9":
             unusual_spending()
-        elif choice == "0":
+        elif choice == "10":
             print("Thank you for using Smart Money Analyzer. Goodbye!")
             break
         else:
-            print("Invalid choice. Please select a number from 0-9.")
+            print("Invalid choice. Please select a number from 1-10.")
 
 
 if __name__ == "__main__":
