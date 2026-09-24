@@ -463,7 +463,5 @@ def main():
             break
         else:
             print("Invalid choice. Please select a number from 1-10.")
-
-
 if __name__ == "__main__":
     main()
