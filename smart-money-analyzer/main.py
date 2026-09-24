@@ -435,9 +435,8 @@ def show_menu():
     print("9. Unusual Spending")
     print("10. Exit")
 
-
 def main():
-    # Keep the app running until the user chooses Exit
+    # its Keep the app running until the user chooses Exit
     while True:
         show_menu()
         choice = input("Enter your choice: ").strip()
