@@ -440,7 +440,6 @@ def main():
     while True:
         show_menu()
         choice = input("Enter your choice: ").strip()
-
         if choice == "1":
             add_transaction()
         elif choice == "2":
